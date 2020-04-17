@@ -1,0 +1,120 @@
+<h1>Sign Up</h1>
+<mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your details</ng-template>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Last name, First name" 
+          formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+              <input matInput placeholder="username@gmail.com" 
+              formControlName="email" required>
+            </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div>
+            <label>Gender : </label>
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+              </mat-radio-group>
+        </div>
+        <br>
+        <div>
+          <button mat-raised-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out your address</ng-template>
+        <mat-form-field>
+          <mat-label>Address 1</mat-label>
+          <input matInput formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div>
+            <mat-form-field>
+                <mat-label>Address 2</mat-label>
+                <input matInput formControlName="secondCtrl">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <input matInput formControlName="secondCtrl" required>
+            </mat-form-field>
+        </div>
+        <div>
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>State</mat-label>
+              <input type="text"
+                     aria-label="Number"
+                     matInput
+                     [formControl]="myControl"
+                     [matAutocomplete]="auto" required>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+        </div>
+        <div>
+          <button mat-raised-button matStepperPrevious>Back</button>
+          <button mat-raised-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Set up your password</ng-template>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" 
+            formControlName="thirdCtrl" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" 
+                    [attr.aria-label]="'Hide password'" 
+                    [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <div>
+            <mat-form-field>
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [type]="hide ? 'confirmPassword' : 'text'"
+                        formControlName="thirdCtrl" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" 
+                        [attr.aria-label]="'Hide confirmPassword'" 
+                        [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+          </div>
+          <div>
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button routerLink="/login">Done</button>
+      </div>
+  </mat-step>
+</mat-horizontal-stepper>

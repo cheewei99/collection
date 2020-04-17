@@ -1,0 +1,62 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav" fixedInViewport
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>
+        <h1 style="color: white;">Marvel</h1>
+      </mat-toolbar>
+      <mat-tree [dataSource]="dataSources" [treeControl]="treeControl">
+        <mat-tree-node class="btnLinks" routerLink="{{node.url}}" routerLinkActive="active" *matTreeNodeDef="let node" matTreeNodePadding>
+          <button mat-icon-button disabled></button>
+          <span click="navigateToPage(node.name)">
+            {{node.name}}
+          </span>
+        </mat-tree-node>
+        <mat-tree-node class="btnLinks" routerLink="{{node.url}}" routerLinkActive="active" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          <span>
+            {{node.name}}
+          </span>
+        </mat-tree-node>
+      </mat-tree>
+      </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+          <mat-icon aria-hidden="false" aria-label="Example home icon"
+          routerLink="/home" class="home">home</mat-icon>
+            <span class="example-fill-remaining-space"></span>
+            <span>About</span>
+            <span class="example-fill-remaining-space"></span>
+            <span>Contact Us</span>
+            <span class="example-fill-remaining-space"></span>
+            <span routerLink="/movie">List of Movies</span>
+            <span class="example-fill-remaining-space"></span>
+            <span routerLink="/login">Login</span>
+        </mat-toolbar>
+        <label>Mark II</label>
+        <mat-grid-list cols="5" fit>
+          <mat-grid-tile [colspan]="2" [rowspan]="4">
+            <img src="assets/image/mark II/MKII 1.jpg" alt="IronMan">
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="3" [rowspan]="2">
+            <img src="assets/image/mark II/MKII 2.jpg" alt="IronMan">
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="2">
+            <img src="assets/image/mark II/MKII 3.png" alt="IronMan">
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="2">
+            <img src="assets/image/mark II/MKII 4.jpg" alt="IronMan">
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="2">
+            <img src="assets/image/mark II/MKII 5.jpg" alt="IronMan">
+          </mat-grid-tile>
+          
+        </mat-grid-list>
+        
+    </mat-sidenav-content>
+  </mat-sidenav-container>

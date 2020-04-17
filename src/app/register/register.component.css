@@ -1,0 +1,25 @@
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+h1 {
+  position: absolute;
+  width: 495px;
+  height: 70px;
+  left: 600px;
+  top: 50px;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+mat-horizontal-stepper{
+  position: absolute;
+  width: auto;
+  height: 10px;
+  top: 100px;
+  left: 290px;
+}

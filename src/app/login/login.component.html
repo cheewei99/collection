@@ -1,0 +1,44 @@
+<form [formGroup]="addressForm" class="form">
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="addressForm.controls['email'].hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['email'].hasError('email')">
+              Enter <strong>correct</strong> email
+            </mat-error>
+           </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+            <input matInput [type]="hide ? 'password' : 'text'" 
+            placeholder="Password" formControlName="password">
+            <mat-error *ngIf="addressForm.controls['password'].hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['password'].hasError('pattern')">
+              Password must include <strong>at least 1 number</strong>, 
+              <strong>1 lowercase alphabet</strong>,
+              <strong>1 Uppercase alphabet</strong>,
+              <strong>1 symbol</strong> and <strong>minimum 8 letters</strong>,
+            </mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" 
+                    [attr.aria-label]="'Hide password'" 
+                    [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" routerLink="/home">Login</button>
+        <button mat-raised-button color="basic" routerLink="/register">SignUp</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>

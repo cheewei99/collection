@@ -1,0 +1,21 @@
+.shipping-card {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 502px;
+    top: 160px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05), 
+    0px 4px 4px rgba(0, 0, 0, 0.25), 
+    0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .mat-radio-button {
+    display: block;
+    margin: 5px 0;
+  }
+  
+  mat-card-title {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+  }
